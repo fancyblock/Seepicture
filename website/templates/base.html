@@ -1,11 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>CoconutIslandRoom</title>
-</head>
-<body>
-{% block mediator %}
+{% extends "bootstrap/base.html" %}
+{% block title %}
+CoconutIslandRoom
+{% endblock%}
+
+{% block navbar %}
+<div class="navbar navbar-inverse" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+        </div>
+    </div>
+</div>
 {% endblock %}
-</body>
-</html>
+
+{% block content %}
+<div class="container">
+    {% block mediator %}{% endblock %}
+</div>
+{% endblock %}
