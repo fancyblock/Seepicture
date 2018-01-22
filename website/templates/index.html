@@ -1,10 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>椰岛休闲会所</title>
-</head>
-<body>
-
-</body>
-</html>
+{% extends "base.html" %}
+{% block mediator %}
+<form action="query_result" method="post">
+    查询关键字：<input type="text" name="keyword">
+    <input type="submit", value="提交">
+</form>
+{% endblock %}
