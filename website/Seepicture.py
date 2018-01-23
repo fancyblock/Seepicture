@@ -5,7 +5,7 @@ from flask_bootstrap import Bootstrap
 
 
 app = Flask(__name__)
-app.config["SECRET_KEY"] = "the password"
+app.config["SECRET_KEY"] = "secret key"
 bootstrap = Bootstrap(app)
 
 
@@ -30,5 +30,11 @@ def page_not_found(e):
     return render_template("404.html"), 404
 
 
+# 服务器内部错误
+@app.errorhandler(500)
+def internal_error(e):
+    return render_template("500.html"), 500
+
+
 if __name__ == "__main__":
-    app.run("0.0.0.0", 80)
+    app.run("0.0.0.0", 80, True)
