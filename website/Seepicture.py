@@ -1,12 +1,21 @@
-from flask import Flask
-from flask import render_template
-from flask import request
+from flask import Flask, render_template, request, g, flash, redirect, url_for
 from flask_bootstrap import Bootstrap
 
 
 app = Flask(__name__)
 app.config["SECRET_KEY"] = "secret key"
 bootstrap = Bootstrap(app)
+
+
+# 登录页面
+@app.route("/login", methods=["GET", "POST"])
+def login():
+    if request.method == "POST":
+        # TODO
+        flash("登录成功")
+        return redirect(url_for("index"))
+    else:
+        return render_template("login.html")
 
 
 # 主页
@@ -16,11 +25,11 @@ def index():
 
 
 # 搜索页面
-@app.route("/query_result", methods=["post"])
+@app.route("/query_result", methods=["POST"])
 def query_result():
     keyword = request.form["keyword"]
     print("Query Keyword: " + keyword)
-    #TODO
+    # TODO
     return render_template("query_result.html")
 
 
