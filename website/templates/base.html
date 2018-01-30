@@ -1,19 +1,17 @@
-{% extends "bootstrap/base.html" %}
-{% block title %}
-CoconutIslandRoom
-{% endblock%}
-
-{% block navbar %}
-<div class="navbar navbar-inverse" role="navigation">
-    <div class="container">
-        <div class="navbar-header">
-        </div>
-    </div>
-</div>
-{% endblock %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>椰岛休闲会所</title>
+</head>
+<body>
+<script type=text/javascript src="{{ url_for('static', filename='jquery-3.3.1.min.js') }}"></script>
 
 {% block content %}
 <div class="container">
     {% block mediator %}{% endblock %}
 </div>
 {% endblock %}
+
+</body>
+</html>

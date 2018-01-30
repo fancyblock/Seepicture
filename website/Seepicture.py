@@ -1,17 +1,18 @@
 from flask import Flask, render_template, request, g, flash, redirect, url_for
-from flask_bootstrap import Bootstrap
+import Store
 
 
 app = Flask(__name__)
 app.config["SECRET_KEY"] = "secret key"
-bootstrap = Bootstrap(app)
+store = None
 
 
 # 服务器初始化
 @app.before_first_request
 def server_init():
     print("Server init.")
-    #setattr(g, "info", "abc177")
+    global store
+    store = Store.Store("127.0.0.1", 27017, "milf_pic")
 
 
 # 请求之前的钩子
@@ -19,7 +20,7 @@ def server_init():
 def before_request():
     pass
 
-    
+
 # 登录页面
 @app.route("/login", methods=["GET", "POST"])
 def login():
@@ -41,8 +42,15 @@ def index():
 @app.route("/query_result", methods=["POST"])
 def query_result():
     keyword = request.form["keyword"]
-    print("Query Keyword: " + keyword)
-    # TODO
+    page_index = 0
+    if "pageIndex" in request.form:
+        page_index = request.form["pageIndex"]
+
+    print("Query Keyword: " + keyword + " , page " + str(page_index))
+
+    global store
+    res = store.get_threads_by_keyword(keyword)
+
     return render_template("query_result.html")
 
 
