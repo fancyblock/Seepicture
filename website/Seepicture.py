@@ -1,12 +1,24 @@
-from flask import Flask
-from flask import render_template
-from flask import request
+from flask import Flask, render_template, request, flash, redirect, url_for
+from flask import g
 from flask_bootstrap import Bootstrap
 
 
 app = Flask(__name__)
 app.config["SECRET_KEY"] = "secret key"
 bootstrap = Bootstrap(app)
+
+
+# 服务器初始化
+@app.before_first_request
+def server_init():
+    print("Server init.")
+    #setattr(g, "info", "abc177")
+
+
+# 请求之前的钩子
+@app.before_request
+def before_request():
+    pass
 
 
 # 主页
@@ -20,7 +32,7 @@ def index():
 def query_result():
     keyword = request.form["keyword"]
     print("Query Keyword: " + keyword)
-    #TODO
+    # TODO
     return render_template("query_result.html")
 
 
