@@ -51,7 +51,7 @@ def query_result():
     global store
     res = store.get_threads_by_keyword(keyword)
 
-    return render_template("query_result.html")
+    return render_template("query_result.html", thread_info = res, index = page_index)
 
 
 # 错误页面

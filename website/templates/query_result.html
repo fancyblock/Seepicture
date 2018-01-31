@@ -1,4 +1,8 @@
 {% extends "base.html" %}
 {% block mediator %}
-//TODO
+<ul>
+    {% for info in thread_info %}
+    <li> {{ info["name"] }} </li>
+    {% endfor %}
+</ul>
 {% endblock %}
