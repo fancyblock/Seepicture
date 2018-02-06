@@ -1,8 +1,13 @@
 {% extends "base.html" %}
 {% block mediator %}
+<form action="query_result" method="post">
+    <b>输入色情关键字：</b><input type="text" name="keyword">
+    <input type="submit", value="探索">
+</form>
+<br>
 <ul>
     {% for info in thread_info %}
-    <li> {{ info["name"] }} </li>
+    <li><a href="javascript:;" onclick="javascript:post('/pic_result', {})"> {{ info["name"] }} </a></li>
     {% endfor %}
 </ul>
 {% endblock %}

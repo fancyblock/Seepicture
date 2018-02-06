@@ -1,8 +1,10 @@
 from flask import Flask, render_template, request, g, flash, redirect, url_for
+from flask_bootstrap import Bootstrap
 import Store
 
 
 app = Flask(__name__)
+boostrap = Bootstrap(app)
 app.config["SECRET_KEY"] = "secret key"
 store = None
 
@@ -19,17 +21,6 @@ def server_init():
 @app.before_request
 def before_request():
     pass
-
-
-# 登录页面
-@app.route("/login", methods=["GET", "POST"])
-def login():
-    if request.method == "POST":
-        # TODO
-        flash("登录成功")
-        return redirect(url_for("index"))
-    else:
-        return render_template("login.html")
 
 
 # 主页
@@ -53,6 +44,12 @@ def query_result():
 
     return render_template("query_result.html", thread_info = res, index = page_index)
 
+
+# 套图页面
+@app.route("/pic_result", methods=["POST"])
+def pic_result():
+    #TODO
+    return render_template("pic_result.html")
 
 # 错误页面
 @app.errorhandler(404)

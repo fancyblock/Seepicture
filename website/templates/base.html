@@ -1,17 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>椰岛休闲会所</title>
-</head>
-<body>
-<script type=text/javascript src="{{ url_for('static', filename='jquery-3.3.1.min.js') }}"></script>
-
+{% extends "bootstrap/base.html" %}
+{% block title %}椰岛休闲会所{% endblock %}
+{% block navbar %}
+<div class="navbar navbar-inverse" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle"
+            data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+    </div>
+</div>
+{% endblock %}
 {% block content %}
+<script type=text/javascript src="{{ url_for('static', filename='jquery-3.3.1.min.js') }}"></script>
 <div class="container">
     {% block mediator %}{% endblock %}
 </div>
 {% endblock %}
-
-</body>
-</html>
