@@ -8,7 +8,7 @@ class Store(object):
     def __init__(self, address, port, database_name):
         self._client = MongoClient(address, port)
         self._db = self._client[database_name]
-        self._thread_info = self._db["thread_info"]     # 数据库Collection名字
+        self._thread_info = self._db["thread_data"]     # 数据库Collection名字
         self._pic_info = self._db["pic_data"]
 
     # 按关键字查找帖子，返回帖子信息列表

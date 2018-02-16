@@ -51,6 +51,7 @@ def pic_result():
     #TODO
     return render_template("pic_result.html")
 
+
 # 错误页面
 @app.errorhandler(404)
 def page_not_found(e):
