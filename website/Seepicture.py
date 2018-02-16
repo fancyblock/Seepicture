@@ -33,22 +33,22 @@ def index():
 @app.route("/query_result", methods=["POST"])
 def query_result():
     keyword = request.form["keyword"]
-    page_index = 0
-    if "pageIndex" in request.form:
-        page_index = request.form["pageIndex"]
 
-    print("Query Keyword: " + keyword + " , page " + str(page_index))
+    print("Query Keyword: " + keyword )
 
     global store
     res = store.get_threads_by_keyword(keyword)
 
-    return render_template("query_result.html", thread_info = res, index = page_index)
+    return render_template("query_result.html", thread_info = res)
 
 
 # 套图页面
 @app.route("/pic_result", methods=["POST"])
 def pic_result():
-    #TODO
+    tid = request.form["tid"]
+
+    print("Thread Id: " + tid)
+
     return render_template("pic_result.html")
 
 
