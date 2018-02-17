@@ -1,12 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>{{ name }}</title>
-</head>
-<body>
+{% extends "base.html" %}
+    {% block title %}
+    {{ name }}
+    {% endblock %}
+{% block mediator %}
 {% for url in images %}
-<img src="/get_picture?url={{url}}" border="3"/> <br>
+<img src="/get_picture?url={{url}}" border="3"/>
 {% endfor %}
-</body>
-</html>
+<br><br>
+{% endblock %}
