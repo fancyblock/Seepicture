@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, g, flash, redirect, url_for
+from flask import Flask, render_template, request, g, flash, redirect, url_for, make_response
 from flask_bootstrap import Bootstrap
 import Store
 
@@ -47,9 +47,29 @@ def query_result():
 def pic_result():
     tid = request.form["tid"]
 
-    print("Thread Id: " + tid)
+    global store
+    image_urls = store.get_images_by_tid(tid)
+    thread_name = store.get_thread_name(tid)
 
-    return render_template("pic_result.html")
+    print("Request Thread: " + thread_name)
+
+    return render_template("pic_result.html", name = thread_name , images = image_urls)
+
+
+# 获取图片
+@app.route("/get_picture", methods=["GET"])
+def get_picture():
+    url = request.args['url']
+
+    print("Get picrure: " + url)
+
+    global store
+    response = make_response(store.get_image_data_by_url(url))
+
+    ext_name = url.split(".")[-1]
+    response.headers["Content-type"] = "image/" + ext_name
+
+    return response
 
 
 # 错误页面

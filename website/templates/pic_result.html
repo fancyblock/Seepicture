@@ -2,9 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>{{ name }}</title>
 </head>
 <body>
-//TODO show pictures
+{% for url in images %}
+<img src="/get_picture?url={{url}}" border="3"/> <br>
+{% endfor %}
 </body>
 </html>

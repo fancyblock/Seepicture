@@ -20,3 +20,30 @@ class Store(object):
             result.append(item)
 
         return result
+
+    # 获取帖子名字
+    def get_thread_name(self, tid):
+        cursor = self._thread_info.find({"tid":tid})
+
+        for item in cursor:
+            return item["name"]
+
+        return ""
+
+    # 获取帖子里图片信息
+    def get_images_by_tid(self, tid):
+        cursor = self._thread_info.find({"tid": tid})
+
+        for item in cursor:
+            return item["url"]
+
+        return []
+
+    # 获取图片数据
+    def get_image_data_by_url(self, url):
+        cursor = self._pic_info.find({ "url": url })
+
+        for item in cursor:
+            return item["data"]
+
+        return None
