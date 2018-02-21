@@ -35,7 +35,8 @@ class Store(object):
         cursor = self._thread_info.find({"tid": tid})
 
         for item in cursor:
-            return item["url"]
+            if "url" in item:
+                return item["url"]
 
         return []
 

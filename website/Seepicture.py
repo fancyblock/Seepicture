@@ -14,7 +14,7 @@ store = None
 def server_init():
     print("Server init.")
     global store
-    store = Store.Store("127.0.0.1", 27017, "milf_pic")
+    store = Store.Store("127.0.0.1", 27017, "t66y_pic")
 
 
 # 请求之前的钩子
