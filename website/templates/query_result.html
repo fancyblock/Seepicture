@@ -1,6 +1,9 @@
-{% extends "index.html" %}
+{% extends "base.html" %}
 {% block mediator %}
-{{ super() }}
+<form action="query_result" method="post">
+    <b>输入色情关键字：</b><input type="text" name="keyword" value={{cur_keyword}}>
+    <input type="submit" value="探索">
+</form>
 <br>
 <ul>
     {% for info in thread_info %}

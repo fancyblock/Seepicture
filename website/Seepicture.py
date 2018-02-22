@@ -39,7 +39,7 @@ def query_result():
     global store
     res = store.get_threads_by_keyword(keyword)
 
-    return render_template("query_result.html", thread_info=res)
+    return render_template("query_result.html", thread_info=res, cur_keyword=keyword)
 
 
 # 套图页面
