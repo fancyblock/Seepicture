@@ -34,12 +34,12 @@ def index():
 def query_result():
     keyword = request.form["keyword"]
 
-    print("Query Keyword: " + keyword )
+    print("Query Keyword: " + keyword)
 
     global store
     res = store.get_threads_by_keyword(keyword)
 
-    return render_template("query_result.html", thread_info = res)
+    return render_template("query_result.html", thread_info=res)
 
 
 # 套图页面
@@ -53,7 +53,7 @@ def pic_result():
 
     print("Request Thread: " + thread_name)
 
-    return render_template("pic_result.html", name = thread_name , images = image_urls)
+    return render_template("pic_result.html", name=thread_name, images=image_urls)
 
 
 # 获取图片

@@ -23,7 +23,7 @@ class Store(object):
 
     # 获取帖子名字
     def get_thread_name(self, tid):
-        cursor = self._thread_info.find({"tid":tid})
+        cursor = self._thread_info.find({"tid": tid})
 
         for item in cursor:
             return item["name"]
