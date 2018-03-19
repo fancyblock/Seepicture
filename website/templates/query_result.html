@@ -5,9 +5,9 @@
     <input type="submit" value="探索">
 </form>
 <br>
-<ul>
+<ol>
     {% for info in thread_info %}
     <li><a href="javascript:;" onclick="javascript:post('/pic_result', {'tid':{{info['tid']}}})"> {{ info["name"] }} </a></li>
     {% endfor %}
-</ul>
+</ol>
 {% endblock %}
