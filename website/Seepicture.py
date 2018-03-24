@@ -1,12 +1,14 @@
 from flask import Flask, render_template, request, g, flash, redirect, url_for, make_response
 from flask_bootstrap import Bootstrap
 import Store
+import sys
 
 
 app = Flask(__name__)
 boostrap = Bootstrap(app)
 app.config["SECRET_KEY"] = "secret key"
 store = None
+g_database = "t66y_pic"
 
 
 # 服务器初始化
@@ -14,7 +16,7 @@ store = None
 def server_init():
     print("Server init.")
     global store
-    store = Store.Store("127.0.0.1", 27017, "t66y_pic")
+    store = Store.Store("127.0.0.1", 27017, g_database)
 
 
 # 请求之前的钩子
@@ -85,4 +87,9 @@ def internal_error(e):
 
 
 if __name__ == "__main__":
+
+    if len(sys.argv) > 1:
+        global g_database
+        g_database = sys.argv[1]
+
     app.run("0.0.0.0", 80, True)
