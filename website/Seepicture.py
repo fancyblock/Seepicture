@@ -89,7 +89,7 @@ def internal_error(e):
 if __name__ == "__main__":
 
     if len(sys.argv) > 1:
-        global g_database
+        #global g_database
         g_database = sys.argv[1]
 
     app.run("0.0.0.0", 80, True)
